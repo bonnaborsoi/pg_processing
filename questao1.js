@@ -36,5 +36,4 @@ function draw() {
   noStroke();
   fill('#E91E63');
   ellipse(xpos, ypos, raio, raio);
-
 }
