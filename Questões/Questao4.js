@@ -1,4 +1,3 @@
-
 // As translações não são cumulativas já que estão dentro dos ifs
 
 let circlex = -20;
