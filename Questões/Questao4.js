@@ -41,7 +41,7 @@ function draw() {
   
   // Segundo semi-círculo
   if (t > 4 && t <= 8){
-    t = t - 4; //// COMENTARRRR
+    t = t - 4; // Para o cálculo da rotação por segundo
     
     // Translação (a nova origem é o ponto de partida do semi-círculo anterior)
     applyMatrix(1, 0, 0,
@@ -60,7 +60,7 @@ function draw() {
   
   // Terceiro semi-círculo
   if (t > 8 && t <= 12){
-    t= t - 8;
+    t = t - 8;
     
     // Translação em relação ao eixo original (360,200)
     applyMatrix(1, 0, 0,
