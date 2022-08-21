@@ -2,7 +2,7 @@
 let raio = 30; // Tamanho do raio 
 let xpos, ypos; // Posição inicial
 let yspeed = 10; // Velocidade vertical 
-let xspeed = 11.5; // Velocidade horizontal (720/60 frames por 2s egundos)
+let xspeed = 11.5; // Velocidade horizontal (720/60 frames por 2 segundos)
 
 function setup() {
   createCanvas(720, 400);
