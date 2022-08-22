@@ -3,7 +3,7 @@ let xjoint1, yjoint1; // Ombro
 let xjoint2, yjoint2; // Cotovelo
 let xjoint3, yjoint3; // Punho
 
-let frames = 0;
+let t = 0; // Tempo
 
 function setup() {
   createCanvas(720, 400);
@@ -23,7 +23,7 @@ function setup() {
 function draw() {
   background('rgb(165,129,221)')
   angleMode(DEGREES); // Ângulos em graus
-  const t = millis()/1000; // Conta o tempo decorrido em segundos
+  t += deltaTime/1000; // Conta o tempo decorrido em segundos
 
   strokeWeight(4); // Espessura das linhas
   
@@ -65,6 +65,6 @@ function draw() {
   
   // Stop
   if (t >= 2){
-    noLoop();
+    t = 0;
   }
 }
