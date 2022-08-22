@@ -9,14 +9,14 @@ function draw() {
   
   strokeWeight(3);
   
-  // Translação que posiciona (0,0) no meio da tela
+  // Translação que posiciona a origem no meio da tela
   applyMatrix(1, 0, 0,
               1, 360, 200);
   
-  // Círculo maior (roxo)
+  // Círculo maior de raio = 100 (roxo)
   push();
   stroke('purple');
-  circle(0,0,200);
+  circle(0,0,200); 
   pop();
   
   // Rotação do círculo menor
@@ -25,11 +25,11 @@ function draw() {
   sin((90)*t), cos((90)*t),
   0,0);
   
-  // Círculo menor
+  // Círculo menor de raio = 25 (lilás)
   stroke('rgb(113,113,199)');
-  circle(0,-75,50);
-
-  // Translação para centro da esfera menor (0,-75)
+  circle(0,-75,50); // 0 no eixo x e -75 no eixo y (100-25)
+  
+  // Translação para o centro do círculo menor (0,-75)
   applyMatrix(1, 0, 0,
               1, 0, -75);
     
