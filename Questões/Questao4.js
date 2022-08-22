@@ -1,7 +1,10 @@
 // As translações não são cumulativas já que estão dentro dos ifs
 
-let circlex = -20;
-let circley = 0;
+let circlex;
+let circley;
+
+let t = 0; // Tempo
+let tempoTransf = 0; // Tempo decorrido do início de cada transformação
 
 function setup() {
   createCanvas(720, 400);
@@ -11,7 +14,7 @@ function draw() {
   angleMode(DEGREES);
   frameRate(30);
   
-  let t = millis()/1000; // Conta o tempo decorrido em segundos
+  t += deltaTime/1000; // Conta o tempo decorrido em segundos
   
   // Translação que traz a origem pro ponto (360,200)
   applyMatrix(1, 0, 0,
@@ -27,11 +30,14 @@ function draw() {
 
   // Primeiro semi-círculo
   if (t <= 4){
+  tempoTransf = t;
+    circlex = -20;
+    circley = 0;
     
   // Rotação 
   applyMatrix(
-    cos((180/4)*t), -sin((180/4)*t),
-    sin((180/4)*t), cos((180/4)*t),
+    cos((180/4)*tempoTransf), -sin((180/4)*tempoTransf),
+    sin((180/4)*tempoTransf), cos((180/4)*tempoTransf),
     0,0);
   
   // Ponto inicial da trajetória (-20,0) e o raio é 20
@@ -41,7 +47,7 @@ function draw() {
   
   // Segundo semi-círculo
   if (t > 4 && t <= 8){
-    t = t - 4; // Para o cálculo da rotação por segundo
+    tempoTransf = t - 4; // Para o cálculo da rotação por segundo
     
     // Translação (a nova origem é o ponto de partida do semi-círculo anterior)
     applyMatrix(1, 0, 0,
@@ -49,8 +55,8 @@ function draw() {
     
     // Rotação 
     applyMatrix(
-    cos((180/4)*t), -sin((180/4)*t),
-    sin((180/4)*t), cos((180/4)*t),
+    cos((180/4)*tempoTransf), -sin((180/4)*tempoTransf),
+    sin((180/4)*tempoTransf), cos((180/4)*tempoTransf),
     0,0); 
     
     circlex = 40; // O raio é dobrado (20 * 2)
@@ -60,7 +66,7 @@ function draw() {
   
   // Terceiro semi-círculo
   if (t > 8 && t <= 12){
-    t = t - 8;
+    tempoTransf = t - 8;
     
     // Translação em relação ao eixo original (360,200)
     applyMatrix(1, 0, 0,
@@ -68,8 +74,8 @@ function draw() {
 
     // Rotação 
     applyMatrix(
-    cos((180/4)*t), -sin((180/4)*t),
-    sin((180/4)*t), cos((180/4)*t),
+    cos((180/4)*tempoTransf), -sin((180/4)*tempoTransf),
+    sin((180/4)*tempoTransf), cos((180/4)*tempoTransf),
     0,0); 
     
     circlex = -80; // O raio é dobrado (40 * 2)
@@ -79,7 +85,7 @@ function draw() {
   
   // Quarto semi-círculo
   if (t > 12 && t <= 16){
-    t = t - 12;
+    tempoTransf = t - 12;
     
     // Translação em relação ao eixo original (360,200) 
     applyMatrix(1, 0, 0,
@@ -87,8 +93,8 @@ function draw() {
 
     // Rotação
     applyMatrix(
-    cos((180/4)*t), -sin((180/4)*t),
-    sin((180/4)*t), cos((180/4)*t),
+    cos((180/4)*tempoTransf), -sin((180/4)*tempoTransf),
+    sin((180/4)*tempoTransf), cos((180/4)*tempoTransf),
     0,0); 
     
     circlex = 160; // O raio é dobrado (80 * 2)
@@ -97,8 +103,8 @@ function draw() {
   }
   
   // Quinto semi-círculo
-  if (t > 16 && t <= 18){
-    t = t - 16;
+  if (t > 16 && t <= 17){
+    tempoTransf = t - 16;
     
     // Translação em relação ao eixo original (360,200) 
     applyMatrix(1, 0, 0,
@@ -106,12 +112,18 @@ function draw() {
     
     // Rotação
     applyMatrix(
-    cos((180/4)*t), -sin((180/4)*t),
-    sin((180/4)*t), cos((180/4)*t),
+    cos((180/4)*tempoTransf), -sin((180/4)*tempoTransf),
+    sin((180/4)*tempoTransf), cos((180/4)*tempoTransf),
     0,0); 
     
     circlex = -320; // O raio é dobrado (160 * 2)
     strokeWeight(2);
     point(circlex,circley)
-  } 
+  }
+  
+  // Loop
+  if (t > 17){
+    background(255);
+    t = 0; 
+  }
 }
