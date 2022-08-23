@@ -3,7 +3,7 @@
 let circlex;
 let circley;
 
-let t = 0; // Tempo
+let t = 0; // Tempo decorrido total
 let tempoTransf = 0; // Tempo decorrido do início de cada transformação
 
 function setup() {
@@ -15,7 +15,7 @@ function draw() {
   frameRate(30);
   
   t += deltaTime/1000; // Conta o tempo decorrido em segundos
-  
+
   // Translação que traz a origem pro ponto (360,200)
   applyMatrix(1, 0, 0,
               1, 360, 200);
@@ -30,24 +30,26 @@ function draw() {
 
   // Primeiro semi-círculo
   if (t <= 4){
-  tempoTransf = t;
+    tempoTransf = t;
+    
+    // Ponto inicial da trajetória
     circlex = -20;
     circley = 0;
     
-  // Rotação 
-  applyMatrix(
+    // Rotação 
+    applyMatrix(
     cos((180/4)*tempoTransf), -sin((180/4)*tempoTransf),
     sin((180/4)*tempoTransf), cos((180/4)*tempoTransf),
     0,0);
   
-  // Ponto inicial da trajetória (-20,0) e o raio é 20
-  strokeWeight(2);
-  point(circlex,circley);
+    // Ponto inicial da trajetória (-20,0) e o raio é 20
+    strokeWeight(2);
+    point(circlex,circley);
   }
-  
+
   // Segundo semi-círculo
   if (t > 4 && t <= 8){
-    tempoTransf = t - 4; // Para o cálculo da rotação por segundo
+     tempoTransf = t - 4; // Para o cálculo da rotação por segundo
     
     // Translação (a nova origem é o ponto de partida do semi-círculo anterior)
     applyMatrix(1, 0, 0,
