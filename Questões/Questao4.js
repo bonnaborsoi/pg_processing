@@ -30,19 +30,19 @@ function draw() {
 
   // Primeiro semi-círculo
   if (t <= 4){
-  tempoTransf = t;
+    tempoTransf = t;
     circlex = -20;
     circley = 0;
     
-  // Rotação 
-  applyMatrix(
+    // Rotação 
+    applyMatrix(
     cos((180/4)*tempoTransf), -sin((180/4)*tempoTransf),
     sin((180/4)*tempoTransf), cos((180/4)*tempoTransf),
     0,0);
   
-  // Ponto inicial da trajetória (-20,0) e o raio é 20
-  strokeWeight(2);
-  point(circlex,circley);
+    // Ponto inicial da trajetória (-20,0) e o raio é 20
+    strokeWeight(2);
+    point(circlex,circley);
   }
   
   // Segundo semi-círculo
